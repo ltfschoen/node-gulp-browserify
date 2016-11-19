@@ -35,17 +35,6 @@ gulp.task('app:css:prefix', ['app:css'], function(){
         .pipe(gulp.dest('./dist/css'));
 });
 
-// gulp.task('app:js:concat', function(){
-//     gulp
-//         .src('./src/js/**/*.js')
-//         .pipe(sourcemaps.init())
-//         .pipe(concat('bundle.js'))
-//         .pipe(uglify())
-//         .pipe(sourcemaps.write('./maps'))
-//         .pipe(gulp.dest('./dist/js'))
-//     ;
-// });
-
 gulp.task('app:js:browserify', function() {
     return browserify('./src/js/app.js')
         .bundle()
@@ -78,7 +67,6 @@ gulp.task('app:watch', function () {
         }
     });
     gulp.watch('./src/sass/**/*.scss', ['app:css','app:css:prefix']);
-    // gulp.watch('./src/js/**/*.js', ['app:js:concat']);
     gulp.watch('./src/js/**/*.js', ['app:js:browserify']);
     gulp.watch('./src/index.html', ['app:html:build']);
     gulp.watch('./dist/**/*').on('change', browserSync.reload);
@@ -86,7 +74,6 @@ gulp.task('app:watch', function () {
 
 gulp.task('default',['app:css',
                      'app:css:prefix',
-                     // 'app:js:concat',
                      'app:js:browserify',
                      'app:html:build',
                      'app:html:prettify',
