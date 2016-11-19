@@ -1,0 +1,1 @@
+var welcome = require('./welcome.js');

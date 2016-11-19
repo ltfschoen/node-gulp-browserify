@@ -1,0 +1,9 @@
+@import "variables";
+@import "mixins";
+
+@media all and (max-width: $screen-sm-max) {
+  @include white-text-on-black-bg();
+  @media all and (min-width: $screen-xs-min) {
+    @include black-text-on-white-bg();
+  }
+}
